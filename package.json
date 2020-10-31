@@ -1,0 +1,22 @@
+{
+  "name": "puppeteer-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chrome-aws-lambda": "^5.3.0",
+    "puppeteer": "^5.3.1",
+    "puppeteer-core": "^5.3.1"
+  },
+  "dependencies": {
+    "file-type": "^15.0.1",
+    "serverless-dotenv-plugin": "^3.0.0",
+    "serverless-offline": "^6.7.0"
+  }
+}
