@@ -1,0 +1,26 @@
+name: Deploy Main
+
+on:
+  push:
+    branches:
+      - main
+      - hotfix/*
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install --production
+    - name: Generate .env
+      run: |
+        echo REGION=${{ secrets.REGION }} > .env
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.REGION }}
+      with:
+        args: deploy --no-confirm --stage prod
